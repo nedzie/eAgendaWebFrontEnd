@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap');
+
+:root {
+  /* CORES */
+  --general-dark-bg: #212529;
+  --bg-semi-dark: #272b30;
+  --bg-medium-dark: #3f4449;
+  --cinza-hover-logo: #2d2d2d;
+  --branco: #FFF;
+  --semi-branco: rgb(219, 219, 219);
+  /* BOOTSTRAP */
+  --btn-primary-claro: #4adace;
+  --btn-primary-outline-escuro: #25b4ad;
+  --btn-outline-danger: #a74230;
+  --warning: #e0c164;
+}
+
+body {
+  background-color: var(--general-dark-bg);
+  font-family: 'Quicksand', sans-serif;
+}
+
+.ng-select.custom .ng-select-container {
+  background: var(--bg-semi-dark) !important;
+  color: var(--branco);
+}
+
+.ng-option {
+  background: var(--bg-semi-dark) !important;
+  color: var(--semi-branco) !important;
+}
+
+.ng-option:hover {
+  color: var(--branco) !important;
+}
+
+/* OVERRIDES BOOTSTRAP */
+
+
+.btn-primary {
+  background-color: var(--btn-primary-outline-escuro) !important;
+  border-color: var(--btn-primary-outline-escuro) !important;
+}
+
+.btn-primary:hover {
+  background-color: var(--btn-primary-claro) !important;
+  border-color: var(--btn-primary-claro) !important;
+}
+
+.btn-primary:focus {
+  box-shadow: none !important;
+}
+
+.btn-outline-primary {
+  color: var(--btn-primary-outline-escuro) !important;
+  border-color: var(--btn-primary-outline-escuro) !important;
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--btn-primary-claro) !important;
+  color: var(--branco) !important;
+}
+
+.btn-outline-primary:focus {
+  box-shadow: none !important;
+}
+
+.text-primary {
+  color: var(--btn-primary-claro) !important;
+}
+
+.text-warning {
+  color: var(--warning) !important;
+}
+
+.btn-outline-warning {
+  border-color: var(--warning) !important;
+}
+
+.btn-outline-warning:hover {
+  background-color: var(--warning) !important;
+  color: var(--branco) !important;
+}
+
+.btn-outline-warning:focus {
+  box-shadow: none !important;
+}
+
+.btn-outline-danger {
+  border-color: var(--btn-outline-danger) !important;
+}
+
+.btn-outline-danger:hover {
+  background-color: var(--btn-outline-danger) !important;
+  color: var(--branco) !important;
+}
+
+.btn-outline-danger:focus {
+  box-shadow: none !important;
+}
+
+.bg-semi-dark {
+  background-color: var(--bg-semi-dark) !important;
+}
+
+.bg-medium {
+  background-color: var(--bg-medium-dark) !important;
+}
+
+.underline {
+  position: relative;
+}
+
+.underline::before{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--btn-primary-outline-escuro);
+  transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .underline:hover::before {
+    left: 0;
+    right: auto;
+    width: 100%;
+  }
+}
+
+.efeito-logo {
+  display: block;
+  margin: auto;
+  text-decoration: none;
+  color: var(--branco);
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+  z-index: 1;
+}
+
+.efeito-logo::after {
+  content: '';
+  display: block;
+  height: 2px;
+  position: absolute;
+  bottom: 0;
+  right: 1.25rem;
+  left: 1.25rem;
+  background-color: var(--branco);
+  transition: all .5s cubic-bezier(0.2, 0, 0, 1);
+  transform-origin: bottom center;
+  z-index: -1;
+}
+
+.efeito-logo:hover {
+  color: var(--cinza-hover-logo);
+}
+
+.efeito-logo:hover::after {
+  right: 0;
+  left: 0;
+  height: 100%;
+}
+
+/* ------------------------INPUT------------------------*/
+
+.colorful-gradient {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  border-radius: 2px;
+}
+
+.colorful-gradient::after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: 999;
+  height: 2px;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  background-position: 0% 0%;
+  background: linear-gradient(to right,
+    #B294FF,
+    #e65763,
+    #FEFFB8,
+    #57E6E6,
+    #ff94fa,
+    #8dc094,
+    #CEAB93,
+    #D1D1D1,
+    #B294FF
+  );
+  background-size: 5000% auto;
+  animation: gradient 5s linear infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0 0
+  }
+  100% {
+    background-position: 100% 0
+  }
+}

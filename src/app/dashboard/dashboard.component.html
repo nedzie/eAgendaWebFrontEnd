@@ -1,0 +1,27 @@
+<section class="mt-5">
+  <div class="container">
+    <div class="card bg-semi-dark text-bg-dark">
+      <div class="row align-items gy-3 p-5" *ngIf="(usuarioLogado$ | async) as usuarioLogado">
+        <div class="col-12 col-md-7">
+          <h1 class="card-title fw-semibold text-primary">Painel do Usuário</h1>
+
+          <h2 class="fw-semibold fs-4">{{ usuarioLogado.nome }}</h2>
+
+          <section class="fs-5" id="info">
+            <p class="mt-4">O <span class="text-primary fw-semibold">eAgenda</span> busca agilizar o gerenciamento da
+              rotina diária ao facilitar o acesso e controle de suas tarefas , contatos, compromissos e despesas.</p>
+            <p class="text-primary fw-semibold">O que você deseja gerenciar?</p>
+          </section>
+          <section class="d-grid d-md-flex gap-2" id="buttons">
+            <a href="" class="btn btn-primary" routerLink="/tarefas"><i
+                class="bi bi-bookmark-check-fill me-2">Tarefas</i></a>
+          </section>
+        </div>
+
+        <div class="col-12 col-md-5">
+          <img class="img-fluid" src="/assets/dashboard-image.svg">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
