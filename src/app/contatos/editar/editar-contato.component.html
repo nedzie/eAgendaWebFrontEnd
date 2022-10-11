@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-10 col-lg-6 mx-auto mt-5 text-bg-dark">
+
+      <div class="text-md-start">
+        <h1 class="fw-bold text-primary">
+          Editar Contato
+        </h1>
+        <hr />
+      </div>
+
+      <form class="mt-4" [formGroup]="formContato">
+
+        <div class="form-group mb-3 position-relative">
+          <label class="form-label" for="nome">Nome</label>
+          <input class="form-control" formControlName="nome" type="text" placeholder="Digite o nome do contato"
+            [ngClass]="nome?.touched && nome?.invalid ? 'is-invalid' : ''">
+          <div class="invalid-tooltip" *ngIf="nome?.touched && nome?.invalid">
+            <span *ngIf="nome?.errors?.['required']">O nome precisa ser preenchido.</span>
+            <span *ngIf="nome?.errors?.['minlength']">O nome deve ter no mínimo 6 caracteres.</span>
+          </div>
+        </div>
+
+        <div class="form-group mb-3 position-relative">
+          <label class="form-label" for="email">Email</label>
+          <input class="form-control" formControlName="email" type="email" placeholder="Digite o email do contato"
+            [ngClass]="email?.touched && email?.invalid ? 'is-invalid' : ''">
+          <div class="invalid-tooltip" *ngIf="email?.touched && email?.invalid">
+            <span *ngIf="email?.errors?.['required']">O email precisa ser preenchido.</span>
+            <span *ngIf="email?.errors?.['email']">O email está fora dos padrões.</span>
+          </div>
+        </div>
+
+        <div class="form-group mb-3 position-relative">
+          <label class="form-label" for="telefone">Telefone</label>
+          <input class="form-control" formControlName="telefone" type="tel" placeholder="Digite o telefone do contato"
+            [ngClass]="telefone?.touched && telefone?.invalid ? 'is-invalid' : ''">
+          <div class="invalid-tooltip" *ngIf="telefone?.touched && telefone?.invalid">
+            <span *ngIf="telefone?.errors?.['required']">O telefone precisa ser preenchido.</span>
+            <span *ngIf="telefone?.errors?.['minlength']">O telefone está fora dos padrões.</span>
+          </div>
+        </div>
+
+        <div class="form-group mb-3 position-relative">
+          <label class="form-label" for="empresa">Empresa</label>
+          <input class="form-control" formControlName="empresa" type="text" placeholder="Digite a empresa do contato"
+            [ngClass]="empresa?.touched && empresa?.invalid ? 'is-invalid' : ''">
+        </div>
+
+        <div class="form-group mb-3 position-relative">
+          <label class="form-label" for="cargo">Cargo</label>
+          <input class="form-control" formControlName="cargo" type="text" placeholder="Digite o cargo do contato"
+            [ngClass]="cargo?.touched && cargo?.invalid ? 'is-invalid' : ''">
+        </div>
+
+        <div class="card-footer g-grid d-flex gap-1 mt-5">
+          <button class="btn btn-primary px-5" (click)="gravar()">
+            <i class="bi bi-save2 me-2"></i>
+            Gravar
+          </button>
+          <button routerLink="/contatos/listar" type="button" class="btn btn-outline-primary px-5">
+            <i class="bi bi-arrow-return-left me-2"></i>
+            Voltar
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

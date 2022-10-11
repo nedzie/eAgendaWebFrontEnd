@@ -12,5 +12,4 @@ export class FormsTarefaResolver implements Resolve<FormsTarefaViewModel> {
   resolve(route: ActivatedRouteSnapshot): Observable<FormsTarefaViewModel> {
     return this.tarefaService.selecionarPorId(route.params['id']); // Pega os parâmetros enviados por id, vindos lá do tarefa-routing
   }
-
 }

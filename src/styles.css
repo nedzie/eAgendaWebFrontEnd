@@ -15,9 +15,12 @@
   --warning: #e0c164;
 }
 
+* {
+  font-family: 'Quicksand', sans-serif;
+}
+
 body {
   background-color: var(--general-dark-bg);
-  font-family: 'Quicksand', sans-serif;
 }
 
 .ng-select.custom .ng-select-container {

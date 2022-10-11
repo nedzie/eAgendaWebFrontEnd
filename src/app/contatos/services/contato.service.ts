@@ -3,12 +3,12 @@ import { Injectable } from "@angular/core";
 import { catchError, map, Observable, throwError } from "rxjs";
 import { LocalStorageService } from "src/app/auth/services/local-storage.service";
 import { environment } from "src/environments/environment";
-import { FormsTarefaViewModel } from "../view-models/forms-tarefa.view-model";
-import { ListarTarefaViewModel } from "../view-models/listar-tarefa.view-model";
-import { VisualizarTarefaViewModel } from "../view-models/visualizar-tarefa.view-model";
+import { FormsContatoViewModel } from "../view-models/forms-contato.view-model";
+import { ListarContatoViewModel } from "../view-models/listar-contato.view-model";
+import { VisualizarContatoViewModel } from "../view-models/visualizar-contato.view-model";
 
 @Injectable()
-export class TarefaService {
+export class ContatoService {
   private apiUrl: string = environment.apiUrl;
 
   constructor(
@@ -16,17 +16,17 @@ export class TarefaService {
     private localStorage: LocalStorageService
   ) { }
 
-  public inserir(tarefa: FormsTarefaViewModel): Observable<FormsTarefaViewModel> {
+  public inserir(contato: FormsContatoViewModel): Observable<FormsContatoViewModel> {
     const resposta = this.http
-      .post<FormsTarefaViewModel>(this.apiUrl + 'tarefas', tarefa, this.obterHeadersAutorizacao())
+      .post<FormsContatoViewModel>(this.apiUrl + 'contatos', contato, this.obterHeadersAutorizacao())
       .pipe(map(this.processarSucesso), catchError(this.processarFalha));
 
     return resposta;
   }
 
-  public editar(tarefa: FormsTarefaViewModel): Observable<FormsTarefaViewModel> {
+  public editar(contato: FormsContatoViewModel): Observable<FormsContatoViewModel> {
     const resposta = this.http
-      .put<FormsTarefaViewModel>(this.apiUrl + 'tarefas/' + tarefa.id, tarefa, this.obterHeadersAutorizacao())
+      .put<FormsContatoViewModel>(this.apiUrl + 'contatos/' + contato.id, contato, this.obterHeadersAutorizacao())
       .pipe(map(this.processarSucesso), catchError(this.processarFalha));
 
     return resposta;
@@ -34,31 +34,31 @@ export class TarefaService {
 
   public excluir(id: string): Observable<string> {
     const resposta = this.http
-      .delete<string>(this.apiUrl + 'tarefas/' + id, this.obterHeadersAutorizacao())
+      .delete<string>(this.apiUrl + 'contatos/' + id, this.obterHeadersAutorizacao())
       .pipe(map(this.processarSucesso), catchError(this.processarFalha));
 
     return resposta;
   }
 
-  public selecionarTodos(): Observable<ListarTarefaViewModel[]> {
+  public selecionarTodos(): Observable<ListarContatoViewModel[]> {
     const resposta = this.http
-      .get<ListarTarefaViewModel[]>(this.apiUrl + 'tarefas', this.obterHeadersAutorizacao())
+      .get<ListarContatoViewModel[]>(this.apiUrl + 'contatos', this.obterHeadersAutorizacao())
       .pipe(map(this.processarSucesso), catchError(this.processarFalha));
 
     return resposta;
   }
 
-  public selecionarPorId(id: string): Observable<FormsTarefaViewModel> {
+  public selecionarPorId(id: string): Observable<FormsContatoViewModel> {
     const resposta = this.http
-      .get<FormsTarefaViewModel>(this.apiUrl + 'tarefas/' + id, this.obterHeadersAutorizacao())
+      .get<FormsContatoViewModel>(this.apiUrl + 'contatos/' + id, this.obterHeadersAutorizacao())
       .pipe(map(this.processarSucesso), catchError(this.processarFalha));
 
       return resposta;
   }
 
-  public selecionarTarefaCompletaPorId(id: string): Observable<VisualizarTarefaViewModel> {
+  public selecionarContatoCompletoPorId(id: string): Observable<VisualizarContatoViewModel> {
     const resposta = this.http
-      .get<VisualizarTarefaViewModel>(this.apiUrl + 'tarefas/visualizacao-completa/' + id, this.obterHeadersAutorizacao())
+      .get(this.apiUrl + 'contatos/visualizacao-completa/' + id, this.obterHeadersAutorizacao())
       .pipe(map(this.processarSucesso), catchError(this.processarFalha));
 
     return resposta;
@@ -73,6 +73,7 @@ export class TarefaService {
       })
     }
   }
+
   private processarSucesso(resposta: any) {
     if(resposta?.sucesso)
       return resposta.dados;

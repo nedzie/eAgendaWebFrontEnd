@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TarefaService } from '../services/tarefa.service';
 import { FormsTarefaViewModel, ItemTarefaViewModel } from '../view-models/forms-tarefa.view-model';
 import { PrioridadeTarefaEnum } from '../view-models/prioridade-tarefa.enum';
@@ -23,7 +23,8 @@ export class EditarTarefaComponent implements OnInit {
     titulo: Title,
     private fb: FormBuilder,
     private tarefaService: TarefaService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     titulo.setTitle('Editar Tarefa — eAgenda')
   }
@@ -79,7 +80,7 @@ export class EditarTarefaComponent implements OnInit {
 
   public removerItem(item: ItemTarefaViewModel): void {
     if(item) {
-      this.tarefaFormVM.itens.forEach((x, index) => {
+      this.tarefaFormVM.itens.forEach((x) => {
         if(x === item)
           item.status = StatusItemTarefa.Removido;
       });
@@ -109,11 +110,10 @@ export class EditarTarefaComponent implements OnInit {
   }
 
   private processarSucesso(tarefaEditada: FormsTarefaViewModel) {
-    this.router
+    this.router.navigate(['/tarefas/listar']);
   }
 
   private processarFalha(erro: any) {
-
+    console.log(erro);
   }
-
 }
