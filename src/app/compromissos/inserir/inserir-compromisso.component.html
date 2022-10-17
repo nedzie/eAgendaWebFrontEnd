@@ -1,0 +1,119 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-10 col-lg-6 mx-auto mt-5 text-bg-dark">
+
+      <div class="text-md-start">
+        <h1 class="fw-bold text-primary">
+          Inserir Novo Compromisso
+        </h1>
+        <hr />
+      </div>
+
+      <form class="mt-4" [formGroup]="formCompromisso">
+
+        <div class="form-group mb-3 position-relative">
+          <label class="form-label" for="titulo">Assunto</label>
+          <input class="form-control text-bg-dark" formControlName="assunto" type="text"
+            placeholder="Digite o assunto do compromisso"
+            [ngClass]="assunto?.touched && assunto?.invalid ? 'is-invalid' : ''">
+          <div class="invalid-tooltip" *ngIf="assunto?.touched && assunto?.invalid">
+            <span *ngIf="assunto?.errors?.['required']">O assunto precisa ser preenchido.</span>
+            <span *ngIf="assunto?.errors?.['minlength']">O assunto deve ter no mínimo 6 caracteres.</span>
+          </div>
+        </div>
+
+        <div class="form-group mb-3 position-relative">
+          <label class="form-label">Tipo de Compromisso</label>
+          <ng-select class="custom"
+            [ngClass]="tipoLocalizacaoCompromisso?.touched && tipoLocalizacaoCompromisso?.invalid ? 'is-invalid' : ''"
+            formControlName="tipoLocalizacaoCompromisso" [clearable]="false" [searchable]="false">
+            <ng-option *ngFor="let tipo of tipos ; index as i" [value]="i">
+              {{ tipo }}
+            </ng-option>
+          </ng-select>
+          <div class="invalid-tooltip"
+            *ngIf="tipoLocalizacaoCompromisso?.touched && tipoLocalizacaoCompromisso?.invalid">
+            <span *ngIf="tipoLocalizacaoCompromisso?.errors?.['required']">O tipo de compromisso precisa ser
+              definido.</span>
+          </div>
+        </div>
+
+        <div class="form-group mb-3 position-relative">
+          <label class="form-label" for="titulo">Local</label>
+          <input class="form-control text-bg-dark" formControlName="local" type="text"
+            placeholder="Digite o local do compromisso"
+            [ngClass]="local?.touched && local?.invalid ? 'is-invalid' : ''">
+          <div class="invalid-tooltip" *ngIf="local?.touched && local?.invalid">
+            <span *ngIf="local?.errors?.['required']">O local precisa ser preenchido.</span>
+            <span *ngIf="local?.errors?.['minlength']">O local deve ter no mínimo 3 caracteres.</span>
+          </div>
+        </div>
+
+        <div class="form-group mb-3 position-relative">
+          <label class="form-label" for="titulo">Link</label>
+          <input class="form-control text-bg-dark" formControlName="link" type="text"
+            placeholder="Digite o link do compromisso" [ngClass]="link?.touched && link?.invalid ? 'is-invalid' : ''">
+          <div class="invalid-tooltip" *ngIf="link?.touched && link?.invalid">
+            <span *ngIf="link?.errors?.['required']">O link precisa ser preenchido.</span>
+            <span *ngIf="link?.errors?.['minlength']">O link deve ter no mínimo 3 caracteres.</span>
+          </div>
+        </div>
+
+        <div class="form-group mb-3 position-relative">
+          <label class="form-label" for="titulo">Data</label>
+          <input class="form-control text-bg-dark" formControlName="data" type="date"
+            placeholder="Informe a data do compromisso" [ngClass]="data?.touched && data?.invalid ? 'is-invalid' : ''">
+          <div class="invalid-tooltip" *ngIf="data?.touched && data?.invalid">
+            <span *ngIf="data?.errors?.['required']">A data precisa ser preenchida.</span>
+          </div>
+        </div>
+
+        <div class="form-group mb-3 position-relative">
+          <label class="form-label" for="titulo">Início</label>
+          <input class="form-control text-bg-dark" formControlName="horaInicio" type="time"
+            placeholder="Informe a hora de início do compromisso"
+            [ngClass]="horaInicio?.touched && horaInicio?.invalid ? 'is-invalid' : ''">
+          <div class="invalid-tooltip" *ngIf="horaInicio?.touched && horaInicio?.invalid">
+            <span *ngIf="horaInicio?.errors?.['required']">A hora de início precisa ser preenchida.</span>
+          </div>
+        </div>
+
+        <div class="form-group mb-3 position-relative">
+          <label class="form-label" for="titulo">Término</label>
+          <input class="form-control text-bg-dark" formControlName="horaTermino" type="time"
+            placeholder="Informe a hora de término do compromisso"
+            [ngClass]="horaTermino?.touched && horaTermino?.invalid ? 'is-invalid' : ''">
+          <div class="invalid-tooltip" *ngIf="horaTermino?.touched && horaTermino?.invalid">
+            <span *ngIf="horaTermino?.errors?.['required']">A hora de término precisa ser preenchida.</span>
+          </div>
+        </div>
+
+        <div class="form-group mb-3 position-relative">
+          <label class="form-label">Contato</label>
+          <ng-select class="custom" [ngClass]="contatoId?.touched && contatoId?.invalid ? 'is-invalid' : ''"
+            formControlName="contatoId" [clearable]="false" [searchable]="false">
+            <ng-option *ngFor="let contato of (contatos | async) ;" [value]="contato.id">
+              <!-- Observables | async -->
+              {{ contato.nome }}
+            </ng-option>
+          </ng-select>
+          <div class="invalid-tooltip" *ngIf="contatoId?.touched && contatoId?.invalid">
+            <span *ngIf="contatoId?.errors?.['required']">O contato precisa ser definido.</span>
+          </div>
+        </div>
+
+        <div class="card-footer g-grid d-flex gap-1 mt-5">
+          <button class="btn btn-primary px-5" (click)="gravar()">
+            <i class="bi bi-save2 me-2"></i>
+            Gravar
+          </button>
+          <button routerLink="/compromissos/listar" type="button" class="btn btn-outline-primary px-5">
+            <i class="bi bi-arrow-return-left me-2"></i>
+            Voltar
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

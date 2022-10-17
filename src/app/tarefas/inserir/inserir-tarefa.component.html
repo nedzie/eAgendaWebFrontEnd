@@ -23,10 +23,10 @@
 
         <div class="form-group mb-3 position-relative">
           <label class="form-label">Prioridade:</label>
-          <ng-select [ngClass]="prioridade?.touched && prioridade?.invalid ? 'is-invalid' : ''"
+          <ng-select class="custom" [ngClass]="prioridade?.touched && prioridade?.invalid ? 'is-invalid' : ''"
             formControlName="prioridade" [clearable]="false" [searchable]="false">
             <ng-option *ngFor="let prioridade of prioridades ; index as i" [value]="i">
-              {{prioridade}}
+              {{ prioridade }}
             </ng-option>
           </ng-select>
           <div class="invalid-tooltip" *ngIf="prioridade?.touched && prioridade?.invalid">
