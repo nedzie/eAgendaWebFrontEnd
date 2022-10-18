@@ -133,6 +133,10 @@ body {
   }
 }
 
+.cursor-help {
+  cursor: help;
+}
+
 .efeito-logo {
   display: block;
   margin: auto;

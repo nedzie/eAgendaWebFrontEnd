@@ -36,7 +36,7 @@
               <td>{{ c.local ? c.local : "—" }}</td>
               <td>{{ c.link ? c.link : "—" }}</td>
               <td>{{ c.data | date: 'dd/MM/yyyy'}}</td>
-              <td title="{{ c.contato.telefone }}"> {{ c.contato.nome }}</td>
+              <td class="cursor-help" title="{{ c.contato.telefone }}"> {{ c.contato.nome }}</td>
               <td class="d-grid d-md-block">
                 <button class="btn btn-sm btn-primary me-lg-1 me-0 md-md-1 mb-1 mb-md-auto"
                   [routerLink]="['/compromissos/editar', c.id]">
