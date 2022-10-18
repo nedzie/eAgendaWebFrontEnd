@@ -13,6 +13,8 @@ import { EditarCompromissoComponent } from './editar/editar-compromisso.componen
 import { FormsCompromissoResolver } from './services/forms-compromisso.resolver';
 import { ExcluirCompromissoComponent } from './excluir/excluir-compromisso.component';
 import { VisualizarCompromissoResolver } from './services/visualizar-compromisso.resolver';
+import { CompromissosPassadosComponent } from './passados/compromissos-passados.component';
+import { CompromissosFuturosComponent } from './futuros/compromissos-futuros.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { VisualizarCompromissoResolver } from './services/visualizar-compromisso
     InserirCompromissoComponent,
     ListarCompromissoComponent,
     EditarCompromissoComponent,
-    ExcluirCompromissoComponent
+    ExcluirCompromissoComponent,
+    CompromissosPassadosComponent,
+    CompromissosFuturosComponent
   ],
   imports: [
     CommonModule,

@@ -9,6 +9,12 @@
         <hr />
       </div>
 
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-primary" [routerLink]="['/compromissos/passados']">Compromissos
+          passados</button>
+        <button type="button" class="btn btn-primary" [routerLink]="['/compromissos/futuros']">Futuros</button>
+      </div>
+
       <div class="g-grid d-flex gap-1 mt-5">
         <a class="btn btn-primary md-md-1 col-md-2" [routerLink]="['/compromissos/inserir']" role="button">
           <i class="bi bi-plus-circle me-2"></i>

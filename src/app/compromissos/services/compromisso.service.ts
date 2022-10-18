@@ -65,6 +65,29 @@ export class CompromissoService {
     return resposta;
   }
 
+  public selecionarCompromissosPassados(data: Date): Observable<ListarCompromissoViewModel[]> {
+    const dataFormatada = data.toISOString().substring(0, 10);
+    const resposta = this.http
+      .get<ListarCompromissoViewModel[]>(this.apiUrl + 'compromissos/passados/' + dataFormatada, this.obterHeadersAutorizacao())
+      .pipe(map(this.processarSucesso), catchError(this.processarFalha));
+
+    return resposta;
+  }
+
+  public selecionarCompromissosFuturos(dataInicial: Date, dataFinal: Date): Observable<ListarCompromissoViewModel[]> {
+    const dataI = new Date(dataInicial);
+    const dataF = new Date(dataFinal);
+
+    const dataInicialFormatada = dataI.toISOString().substring(0, 10);
+    const dataFinalFormatada = dataF.toISOString().substring(0, 10);
+
+    const resposta = this.http
+      .get<ListarCompromissoViewModel[]>(this.apiUrl + 'compromissos/entre/' + dataInicialFormatada + '/' + dataFinalFormatada, this.obterHeadersAutorizacao())
+      .pipe(map(this.processarSucesso), catchError(this.processarFalha));
+
+    return resposta;
+  }
+
   private obterHeadersAutorizacao() {
     const token = this.localStorage.obterTokenUsuario();
     return {
