@@ -12,7 +12,7 @@
       <form class="mt-4" [formGroup]="formTarefa">
 
         <div class="form-group mb-3 position-relative">
-          <label class="form-label" for="titulo">Titulo</label>
+          <label class="form-label" for="titulo">Título</label>
           <input class="form-control" formControlName="titulo" type="text" placeholder="Digite o título da tarefa"
             [ngClass]="titulo?.touched && titulo?.invalid ? 'is-invalid' : ''">
           <div class="invalid-tooltip" *ngIf="titulo?.touched && titulo?.invalid">

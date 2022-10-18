@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-10 col-lg-6 mx-auto mt-5 text-bg-dark">
+
+      <div class="text-md-start">
+        <h1 class="fw-bold text-primary">
+          Inserir Nova Categoria
+        </h1>
+        <hr />
+      </div>
+
+      <form class="mt-4" [formGroup]="formCategoria">
+
+        <div class="form-group mb-3 position-relative">
+          <label class="form-label" for="titulo">Título</label>
+          <input class="form-control text-bg-dark" formControlName="titulo" type="text"
+            placeholder="Digite o título da categoria"
+            [ngClass]="titulo?.touched && titulo?.invalid ? 'is-invalid' : ''">
+          <div class="invalid-tooltip" *ngIf="titulo?.touched && titulo?.invalid">
+            <span *ngIf="titulo?.errors?.['required']">O título precisa ser preenchido.</span>
+            <span *ngIf="titulo?.errors?.['minlength']">O título deve ter no mínimo 3 caracteres.</span>
+          </div>
+        </div>
+
+        <div class="card-footer g-grid d-flex gap-1 mt-5">
+          <button class="btn btn-primary px-5" (click)="gravar()">
+            <i class="bi bi-save2 me-2"></i>
+            Gravar
+          </button>
+          <button routerLink="/categorias/listar" type="button" class="btn btn-outline-primary px-5">
+            <i class="bi bi-arrow-return-left me-2"></i>
+            Voltar
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
